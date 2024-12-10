@@ -7,6 +7,7 @@ import useModal from "../hooks/useModal";
 import NoteModal from "../components/NoteModal";
 import { deleteNote, archiveNote } from "../api/noteApi";
 import useFetch from "../hooks/useFetch";
+import { ImSpinner2 } from "react-icons/im";
 
 // TODO show a toast after creating/editing/deleting/archiving a note
 
@@ -59,8 +60,13 @@ const NotesContent = ({ noteStatus }:NotesContentProps) => {
 
           {/* TODO put this in a CardGrid.tsx ? So it becomes reusable for /archive too */}
           <div className="mt-6 flex flex-wrap max-sm:flex-col justify-center w-full mx-auto gap-4">
+              
+          
 
-              {isLoading && <p className="mt-40">Loading data...</p>}
+              {isLoading && <div className="flex flex-col gap-3 justify-center">
+                <p className="mt-40">Loading data...</p>
+                <ImSpinner2 className="w-full animate-spin" />
+                </div>}
 
               {isError && <p className="mt-40">Failed to load notes :/</p>}
 
